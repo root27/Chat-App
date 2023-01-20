@@ -4,7 +4,6 @@ import { GiftedChat } from "react-native-gifted-chat";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { collection,addDoc,orderBy,query,onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
-import { useLayoutEffect } from "react";
 
 
 
