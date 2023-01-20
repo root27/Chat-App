@@ -8,6 +8,8 @@ This is a simple chat app built with React-Native and Firebase.
 - Send message to the public chat room
 
 #### App Preview
-<img src="images/preview1.png" width="200" height="400" align="center" />
+<p align="center">
+    <img src="images/preview1.png" width="200" height="400" align="center" />
 
-<img src="images/preview2.png" width="200" height="400" align="center" />
+    <img src="images/preview2.png" width="200" height="400" align="center" />
+</p>
