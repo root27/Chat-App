@@ -5,13 +5,25 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./screens/LoginScreen";
 import ChatScreen from "./screens/ChatScreen";
 
+
 const Stack = createStackNavigator();
 
 
+
+
+
 export default function App() {
+
+  
+
+
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={
+        {
+          headerShown: false
+        }
+      }>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Chat" component={ChatScreen} />
       </Stack.Navigator>
@@ -20,11 +32,4 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
