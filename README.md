@@ -9,6 +9,5 @@ This is a simple chat app built with React-Native and Firebase.
 
 #### App Preview
 <img src="images/preview1.png" width="200" height="400" align="center" />
-<div> </div>
-<div> </div>
+
 <img src="images/preview2.png" width="200" height="400" align="center" />
