@@ -11,6 +11,7 @@ const ChatScreen = ({route}) => {
 
   const [messages, setMessages] = useState([]);
 
+  
  
   useEffect(() => {
     const collectionref = collection(db, "messages");
