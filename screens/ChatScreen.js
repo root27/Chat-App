@@ -4,6 +4,7 @@ import { GiftedChat } from "react-native-gifted-chat";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { collection,addDoc,orderBy,query,onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
+import { StatusBar } from "expo-status-bar";
 
 
 
@@ -60,7 +61,9 @@ const ChatScreen = ({route}) => {
 
   
   return (
+    
     <View style={{flex: 1}}>
+      <StatusBar style="dark" />
     <GiftedChat messages={messages} onSend={messages => {
       onSend(messages)
     }} user={{
