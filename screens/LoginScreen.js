@@ -2,10 +2,12 @@ import { StyleSheet, Text, View ,Image,TextInput,TouchableOpacity} from 'react-n
 import React,{useState} from 'react'
 import { useNavigation } from "@react-navigation/native"
 import {auth} from "../firebase"
-import { signInAnonymously, updateProfile } from "firebase/auth"
+import { updateProfile,signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginScreen = () => {
 
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
     const [name, setName] = useState("")
 
     const navigation = useNavigation();
@@ -20,38 +22,50 @@ const LoginScreen = () => {
             <Image source={require("../assets/chat.jpg")} style={{width: 100, height: 100, alignSelf: "center"}} />
         </View>
         <View style={{marginHorizontal: 32}}>
+
             <Text style={{fontSize: 20, fontWeight: "500", color: "#514e5a",
-            marginTop: 20}}>Username
+            marginTop: 20}}>Name
             </Text>
-            <TextInput style={styles.input} placeholder="Enter your username" onChangeText={(text) => setName(text)} />
-      
+            <TextInput style={styles.input} placeholder="Enter your name" onChangeText={(text) => setName(text)} />
+
+            <Text style={{fontSize: 20, fontWeight: "500", color: "#514e5a",
+            marginTop: 20}}>Email
+            </Text>
+            <TextInput style={styles.input} placeholder="Enter your email" onChangeText={(text) => setEmail(text)} />
+
+            <Text style={{fontSize: 20, fontWeight: "500", color: "#514e5a",
+            marginTop: 20}}>Password
+            </Text>
+            <TextInput style={styles.input} placeholder="Enter your password" 
+            
+                secureTextEntry={true}
+            onChangeText={(text) => setPassword(text)} />
+
             <View style={{alignItems: "flex-end", marginTop: 64}}>
                 <TouchableOpacity onPress={
                     () => {
 
-                        signInAnonymously(auth).then((userCredential) => {
-                            // Signed in..
-                            
+                        signInWithEmailAndPassword( email, password)
+                        .then((userCredential) => {
+                            // Signed in
+                          
+                            console.log(auth.currentUser)
 
                             updateProfile(auth.currentUser, {
                                 displayName: name
-                                }).then(() => {
-                                // Update successful
-                                
-                                setUser(auth.currentUser);
-                                }).catch((error) => {
-                                // An error occurred
-                                console.log(error);
-                                });
-
-                            
-
-
-
-                            // ...
+                            }).then(() => {
+                                // Profile updated!
+                                // ...
                             }).catch((error) => {
-                            const errorCode = error.code;
+                                // An error occurred
+                                // ...
+                                console.log(error)
                             });
+                            
+                        })
+
+
+
 
                         navigation.navigate("Chat",{user: auth.currentUser
                         })
